@@ -14,11 +14,11 @@
 - done POST /api/profiles/:username/follow
 - done DELETE /api/profiles/:username/follow
 - done GET /api/articles
-- GET /api/articles/feed
+- done GET /api/articles/feed
 - done GET /api/articles/:slug
 - done POST /api/articles
-- PUT /api/articles/:slug
-- DELETE /api/articles/:slug
+- done PUT /api/articles/:slug
+- done DELETE /api/articles/:slug
 - POST /api/articles/:slug/comments
 - GET /api/articles/:slug/comments
 - DELETE /api/articles/:slug/comments/:id

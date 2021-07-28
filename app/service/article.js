@@ -20,8 +20,12 @@ class ArticleService extends Service {
     return this.Article.findOneAndUpdate({ _id }, data, { new: true });
   }
 
+  async deleteArticle(id) {
+    return this.Article.findByIdAndDelete(id);
+  }
+
   async find(options = {}) {
-    const { tag, author, favorited, offset = 0, limit = 20 } = options;
+    const { tag, author, favorited, offset = 0, limit = 20, authors } = options;
 
     const condition = {};
 
@@ -32,6 +36,7 @@ class ArticleService extends Service {
 
     if (tag) condition.tagList = [tag];
     if (favorited) condition.favoritedBy = [favorited];
+    if (authors) condition.author = { $in: authors };
 
     return this.Article.find(condition)
       .populate('author')
@@ -41,7 +46,7 @@ class ArticleService extends Service {
   }
 
   async count(options = {}) {
-    const { tag, author, favorited } = options;
+    const { tag, author, favorited, authors } = options;
 
     const condition = {};
 
@@ -52,6 +57,7 @@ class ArticleService extends Service {
 
     if (tag) condition.tagList = [tag];
     if (favorited) condition.favoritedBy = [favorited];
+    if (authors) condition.author = { $in: authors };
 
     return this.Article.countDocuments(condition);
   }

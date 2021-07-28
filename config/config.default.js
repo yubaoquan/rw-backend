@@ -15,9 +15,24 @@ module.exports = (appInfo) => {
   config.keys = `${appInfo.name}_1627378930589_5102`;
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['errorHandler'];
 
   config.security = { csrf: { enable: false } };
+
+  config.salt = 'asetaet';
+
+  config.mongoose = {
+    client: {
+      url: 'mongodb://127.0.0.1:27017/realworld',
+      options: { useUnifiedTopology: true },
+      plugins: [],
+    },
+  };
+
+  config.jwt = {
+    jwtSecret: 'asetaet',
+    jwtExpireTime: 60 * 60 * 8,
+  };
 
   return { ...config };
 };

@@ -1,30 +1,27 @@
 # realworld-backend
 
-## QuickStart
+## 疑难杂症
 
-<!-- add docs here for user -->
+1. 发送请求的时候如果请求头里没有 content-type, controller 中拿到的 request.body 是空对象
 
-see [egg docs][egg] for more detail.
+## 接口进度
 
-### Development
-
-```bash
-npm i
-npm run dev
-open http://localhost:7001/
-```
-
-### Deploy
-
-```bash
-npm start
-npm stop
-```
-
-### npm scripts
-
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
-
-[egg]: https://eggjs.org
+- done POST /api/users/login
+- done POST /api/users
+- done GET /api/user
+- done PUT /api/user
+- done GET /api/profiles/:username
+- done POST /api/profiles/:username/follow
+- done DELETE /api/profiles/:username/follow
+- done GET /api/articles
+- GET /api/articles/feed
+- done GET /api/articles/:slug
+- done POST /api/articles
+- PUT /api/articles/:slug
+- DELETE /api/articles/:slug
+- POST /api/articles/:slug/comments
+- GET /api/articles/:slug/comments
+- DELETE /api/articles/:slug/comments/:id
+- POST /api/articles/:slug/favorite
+- DELETE /api/articles/:slug/favorite
+- GET /api/tags

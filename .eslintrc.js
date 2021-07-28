@@ -26,9 +26,9 @@ module.exports = {
     'import/resolver': {
       alias: {
         map: [
-          [ '@', './src' ],
+          ['@', './src'],
         ],
-        extensions: [ '.tsx', '.ts' ],
+        extensions: ['.tsx', '.ts'],
       },
     },
   },
@@ -44,11 +44,11 @@ module.exports = {
     'import/prefer-default-export': 'off',
     '@typescript-eslint/no-loop-func': 'off',
 
-    'brace-style': [ 'error', '1tbs' ],
-    '@typescript-eslint/no-extra-parens': [ 'error' ],
-    'no-param-reassign': [ 'error', { props: false }],
+    'brace-style': ['error', '1tbs'],
+    '@typescript-eslint/no-extra-parens': ['error'],
+    'no-param-reassign': ['error', { props: false }],
 
-    'max-len': [ 'error', {
+    'max-len': ['error', {
       code: 100,
       tabWidth: 2,
       ignoreComments: true,
@@ -57,22 +57,22 @@ module.exports = {
       ignoreTemplateLiterals: true,
       ignoreRegExpLiterals: true,
     }],
-    'object-curly-newline': [ 'error', {
+    'object-curly-newline': ['error', {
       ObjectExpression: { multiline: true },
       ObjectPattern: { multiline: true },
       ImportDeclaration: { multiline: true },
       ExportDeclaration: { multiline: true },
     }],
-    'max-statements-per-line': [ 'error', { max: 1 }],
-    'react/jsx-filename-extension': [ 'error', { extensions: [ '.js', '.jsx', 'tsx' ] }],
-    'react/jsx-max-props-per-line': [ 'error', { maximum: 1, when: 'multiline' }],
-    '@typescript-eslint/no-use-before-define': [ 'error', { ignoreTypeReferences: false }],
-    'react/jsx-curly-spacing': [ 'error', { when: 'never', attributes: true, children: true }],
+    'max-statements-per-line': ['error', { max: 1 }],
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', 'tsx'] }],
+    'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+    '@typescript-eslint/no-use-before-define': ['error', { ignoreTypeReferences: false }],
+    'react/jsx-curly-spacing': ['error', { when: 'never', attributes: true, children: true }],
     '@typescript-eslint/member-delimiter-style': 'error',
     '@typescript-eslint/prefer-optional-chain': 'error',
-    'import/order': [ 'error', {
+    'import/order': ['error', {
       alphabetize: { order: 'asc', caseInsensitive: false },
-      groups: [ 'builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object' ],
+      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
     }],
     'prefer-destructuring': [
       'error',
@@ -83,7 +83,7 @@ module.exports = {
       { enforceForRenamedProperties: false },
     ],
 
-    'lines-around-comment': [ 'error', {
+    'lines-around-comment': ['error', {
       allowArrayStart: true,
       allowBlockStart: true,
       allowClassStart: true,
@@ -103,7 +103,7 @@ module.exports = {
       { blankLine: 'never', prev: 'import', next: 'import' },
       { blankLine: 'any', prev: 'export', next: 'export' },
     ],
-    '@typescript-eslint/type-annotation-spacing': [ 'error',
+    '@typescript-eslint/type-annotation-spacing': ['error',
       {
         after: true,
         before: false,

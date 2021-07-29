@@ -8,6 +8,7 @@ module.exports = (app) => {
     title: {
       type: String,
       required: true,
+      unique: true,
     },
   });
 

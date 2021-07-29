@@ -19,9 +19,9 @@
 - done POST /api/articles
 - done PUT /api/articles/:slug
 - done DELETE /api/articles/:slug
-- POST /api/articles/:slug/comments
-- GET /api/articles/:slug/comments
-- DELETE /api/articles/:slug/comments/:id
-- POST /api/articles/:slug/favorite
-- DELETE /api/articles/:slug/favorite
-- GET /api/tags
+- done POST /api/articles/:slug/comments
+- done GET /api/articles/:slug/comments
+- done DELETE /api/articles/:slug/comments/:id
+- done POST /api/articles/:slug/favorite
+- done DELETE /api/articles/:slug/favorite
+- done GET /api/tags

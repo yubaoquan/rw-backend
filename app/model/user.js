@@ -34,6 +34,10 @@ module.exports = (app) => {
       type: [Schema.Types.ObjectId],
       ref: 'User',
     },
+    favoriteArticles: {
+      type: [Schema.Types.ObjectId],
+      ref: 'Article',
+    },
   });
 
   return model('User', UserSchema);

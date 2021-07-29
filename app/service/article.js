@@ -6,8 +6,12 @@ class ArticleService extends Service {
     return this.app.model.Article;
   }
 
-  findById(_id) {
-    return this.Article.findOne({ _id });
+  get User() {
+    return this.app.model.User;
+  }
+
+  findById(id) {
+    return this.Article.findById(id);
   }
 
   async createArticle(data) {
@@ -30,7 +34,7 @@ class ArticleService extends Service {
     const condition = {};
 
     if (author !== undefined) {
-      const user = await this.ctx.service.user.findByUsername(author);
+      const user = await this.User.findByUsername(author);
       condition.author = user?._id;
     }
 
@@ -60,6 +64,48 @@ class ArticleService extends Service {
     if (authors) condition.author = { $in: authors };
 
     return this.Article.countDocuments(condition);
+  }
+
+  async addFavorite(articleId, userId) {
+    const [article, user] = await Promise.all([
+      this.Article.findById(articleId),
+      this.User.findById(userId),
+    ]);
+
+    if (article.favoritedBy.every((fId) => !fId.equals(user._id))) {
+      article.favoritedBy.push(user._id);
+      article.favoritesCount += 1;
+      article.save();
+    }
+
+    if (user.favoriteArticles.every((fId) => !fId.equals(article._id))) {
+      user.favoriteArticles.push(article._id);
+      user.save();
+    }
+
+    return article;
+  }
+
+  async unfavorite(articleId, userId) {
+    const [article, user] = await Promise.all([
+      this.Article.findById(articleId),
+      this.User.findById(userId),
+    ]);
+
+    const userIndex = article.favoritedBy.findIndex((fId) => fId.equals(user._id));
+    if (userIndex > -1) {
+      article.favoritedBy.splice(userIndex, 1);
+      article.favoritesCount -= 1;
+      article.save();
+    }
+
+    const articleIndex = user.favoriteArticles.findIndex((fId) => fId.equals(article._id));
+    if (articleIndex > -1) {
+      user.favoriteArticles.splice(articleIndex, 1);
+      user.save();
+    }
+
+    return article;
   }
 }
 

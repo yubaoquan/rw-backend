@@ -3,7 +3,8 @@ const { Controller } = require('egg');
 class TagController extends Controller {
   async getTags() {
     const { ctx } = this;
-    ctx.body = 'getTags';
+    const tags = await this.service.tag.findAll();
+    ctx.body = { tags: tags.map((tag) => tag.title) };
   }
 }
 

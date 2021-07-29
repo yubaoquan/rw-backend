@@ -6,7 +6,6 @@ module.exports = (app) => {
     user: userCtrl,
     profile: profileCtrl,
     article: articleCtrl,
-    comment: commentCtrl,
     tag: tagCtrl,
   } = app.controller;
 
@@ -42,9 +41,9 @@ module.exports = (app) => {
   router.delete('/articles/:slug/favorite', auth, articleCtrl.unfavoriteArticle);
 
   // Comment
-  router.post('/articles/:slug/comments', commentCtrl.createComment);
-  router.get('/articles/:slug/comments', commentCtrl.getComments);
-  router.delete('/articles/:slug/comments/:id', commentCtrl.deleteComment);
+  router.post('/articles/:slug/comments', auth, articleCtrl.createComment);
+  router.get('/articles/:slug/comments', articleCtrl.getComments);
+  router.delete('/articles/:slug/comments/:id', auth, articleCtrl.deleteComment);
 
   // Tag
   router.get('/tags', tagCtrl.getTags);

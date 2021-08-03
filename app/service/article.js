@@ -10,6 +10,10 @@ class ArticleService extends Service {
     return this.app.model.User;
   }
 
+  get userService() {
+    return this.ctx.service.user;
+  }
+
   findById(id) {
     return this.Article.findById(id);
   }
@@ -34,7 +38,7 @@ class ArticleService extends Service {
     const condition = {};
 
     if (author !== undefined) {
-      const user = await this.User.findByUsername(author);
+      const user = await this.userService.findByUsername(author);
       condition.author = user?._id;
     }
 
@@ -55,7 +59,7 @@ class ArticleService extends Service {
     const condition = {};
 
     if (author !== undefined) {
-      const user = await this.ctx.service.user.findByUsername(author);
+      const user = await this.userService.findByUsername(author);
       condition.author = user?._id;
     }
 

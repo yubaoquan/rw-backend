@@ -17,7 +17,10 @@ module.exports = (appInfo) => {
   // add your middleware config here
   config.middleware = ['errorHandler'];
 
-  config.security = { csrf: { enable: false } };
+  config.security = {
+    csrf: { enable: false },
+    domainWhiteList: ['http://localhost:3000'],
+  };
 
   config.salt = 'asetaet';
 

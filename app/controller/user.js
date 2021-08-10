@@ -42,12 +42,29 @@ class UserController extends Controller {
       password: { type: 'string' },
     }, user);
 
+    const errors = {
+      email: [],
+      password: [],
+      username: [],
+    };
+
     if (await this.userService.findByUsername(user.username)) {
-      this.ctx.throw(422, '用户名已存在');
+      errors.username.push('用户名已存在');
     }
 
     if (await this.userService.findByEmail(user.email)) {
-      this.ctx.throw(422, '邮箱已存在');
+      errors.email.push('邮箱已存在');
+    }
+
+    Object.keys(errors).forEach((fieldErrors) => {
+      if (!errors[fieldErrors].length) delete errors[fieldErrors];
+    });
+
+    const hasError = Object.values(errors).length > 0;
+    if (hasError) {
+      ctx.status = 422;
+      ctx.body = { errors };
+      return;
     }
 
     const ret = await this.userService.createUser(user);

@@ -7,9 +7,9 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-realworld-backend",
+    "start": "egg-scripts start --daemon --title=egg-server-realworld-backend --port 7100",
     "stop": "egg-scripts stop --title=egg-server-realworld-backend",
-    "dev": "egg-bin dev",
+    "dev": "egg-bin dev --port 7100",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
